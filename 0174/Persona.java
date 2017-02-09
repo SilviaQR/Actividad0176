@@ -30,10 +30,10 @@ public class Persona
         this.edadPersona = edadPersona;
         caloriasIngeridas = 0;
         if(esHombre == false){
-            metabolismoBasal = (10*pesoPersona) + (6*alturaPersona) - (5*edadPersona) + 5; 
+            metabolismoBasal = (10*pesoPersona) + (6*alturaPersona) + (5*edadPersona) + 5; 
         }
         else{
-            metabolismoBasal = (10*pesoPersona) + (6*alturaPersona) - (5*edadPersona) - 161;
+            metabolismoBasal = (10*pesoPersona) + (6*alturaPersona) + (5*edadPersona) - 161;
         }
     }
     
