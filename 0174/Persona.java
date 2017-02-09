@@ -51,4 +51,31 @@ public class Persona
     {
         return caloriasIngeridas;
     }
+    
+	public String getNombre()
+	{
+		return nombrePersona;
+	}
+
+    public String contestar(String pregunta)
+    {
+        String preguntaFormulada = pregunta;
+        String respuesta = "";
+        if(caloriasIngeridas <= metabolismoBasal){    
+            if((preguntaFormulada.length()%3) == 0){
+                respuesta = "si";
+            }
+            else{
+                respuesta = "no";
+            }
+        }
+		else{
+			respuesta = preguntaFormulada;
+		}
+        if(preguntaFormulada.contains(nombrePersona)){
+			respuesta = preguntaFormulada;
+		}
+		System.out.println(respuesta.toUpperCase());
+        return respuesta.toUpperCase(); 
+    }
 }
