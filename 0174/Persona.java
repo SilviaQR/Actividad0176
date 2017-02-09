@@ -16,6 +16,7 @@ public class Persona
     private int edadPersona;
     private int caloriasIngeridas;
     private int metabolismoBasal;
+    private Comida comidaMasCalorica;
 
     /**
      * Constructor for objects of class Persona
@@ -28,6 +29,7 @@ public class Persona
         this.pesoPersona = pesoPersona;
         this.alturaPersona = alturaPersona;
         this.edadPersona = edadPersona;
+        comidaMasCalorica = null;
         caloriasIngeridas = 0;
         if(esHombre == false){
             metabolismoBasal = (10*pesoPersona) + (6*alturaPersona) + (5*edadPersona) + 5; 
@@ -43,6 +45,13 @@ public class Persona
         if((caloriasIngeridas <= metabolismoBasal)){
             caloriasIngeridas = caloriasIngeridas + comida.getCalorias();
             calorias = comida.getCalorias();
+            comidaMasCalorica = comida;
+            if(comida.getCalorias() > comidaMasCalorica.getCalorias()){
+                comidaMasCalorica = comida;
+            }
+            else{
+                comidaMasCalorica = comida;
+            }
         }
         return calorias;
     }
@@ -52,10 +61,10 @@ public class Persona
         return caloriasIngeridas;
     }
     
-	public String getNombre()
-	{
-		return nombrePersona;
-	}
+    public String getNombre()
+    {
+        return nombrePersona;
+    }
 
     public String contestar(String pregunta)
     {
@@ -69,13 +78,26 @@ public class Persona
                 respuesta = "no";
             }
         }
-		else{
-			respuesta = preguntaFormulada;
-		}
+        else{
+            respuesta = preguntaFormulada;
+        }
         if(preguntaFormulada.contains(nombrePersona)){
-			respuesta = preguntaFormulada;
-		}
-		System.out.println(respuesta.toUpperCase());
+            respuesta = preguntaFormulada;
+        }
+        System.out.println(respuesta.toUpperCase());
         return respuesta.toUpperCase(); 
+    }
+
+    public String getAlimentoMasCaloricoIngerido()
+    {
+        String haComido = null;
+        if(comidaMasCalorica == null){
+            System.out.println("No he comido nada aún.");
+        }
+        else{
+            haComido = comidaMasCalorica.getComida();
+        }
+        System.out.println(haComido);
+        return haComido;
     }
 }
