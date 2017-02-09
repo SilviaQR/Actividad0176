@@ -41,17 +41,20 @@ public class Persona
     
     public int comer(Comida comida)
     {
-        int calorias = -1;
+        int calorias = comida.getCalorias();
         if((caloriasIngeridas <= metabolismoBasal)){
             caloriasIngeridas = caloriasIngeridas + comida.getCalorias();
             calorias = comida.getCalorias();
-            comidaMasCalorica = comida;
-            if(comida.getCalorias() > comidaMasCalorica.getCalorias()){
+            if(comidaMasCalorica == null){
                 comidaMasCalorica = comida;
             }
-            else{
+            else if(comidaMasCalorica.getCalorias() < comida.getCalorias()){
                 comidaMasCalorica = comida;
             }
+        }
+        else{
+            calorias = -1;
+            System.out.println("No quiero comer más.");
         }
         return calorias;
     }
