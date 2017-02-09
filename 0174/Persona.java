@@ -1,4 +1,4 @@
-
+import java.util.ArrayList;
 /**
  * Write a description of class Persona here.
  * 
@@ -17,6 +17,7 @@ public class Persona
     private int caloriasIngeridas;
     private int metabolismoBasal;
     private Comida comidaMasCalorica;
+    private ArrayList<Comida> listaDeComida;
 
     /**
      * Constructor for objects of class Persona
@@ -29,6 +30,7 @@ public class Persona
         this.pesoPersona = pesoPersona;
         this.alturaPersona = alturaPersona;
         this.edadPersona = edadPersona;
+        listaDeComida = new ArrayList<Comida>();
         comidaMasCalorica = null;
         caloriasIngeridas = 0;
         if(esHombre == false){
@@ -42,6 +44,7 @@ public class Persona
     public int comer(Comida comida)
     {
         int calorias = comida.getCalorias();
+        listaDeComida.add(comida);
         if((caloriasIngeridas <= metabolismoBasal)){
             caloriasIngeridas = caloriasIngeridas + comida.getCalorias();
             calorias = comida.getCalorias();
@@ -102,5 +105,12 @@ public class Persona
         }
         System.out.println(haComido);
         return haComido;
+    }
+    
+    public void verListadoComidasIngeridas()
+    {
+        for(Comida comidaActual : listaDeComida){
+            System.out.println(comidaActual.getComida() + ": " + comidaActual.getCalorias() + " calorías.");
+        }
     }
 }
